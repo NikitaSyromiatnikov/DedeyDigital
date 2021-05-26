@@ -1,0 +1,305 @@
+@font-face {
+  font-family: 'Fira Sans';
+  font-weight: normal;
+  src: local('Fira Sans'), format(truetype)
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f1f1f1;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Main container */
+
+.booking__container {
+  display: flex;
+  width: 1170px;
+  height: 91px;
+  margin: 1rem auto;
+  border-style: none;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+}
+
+.booking__city__item {
+  margin-left: 51px;
+}
+
+.input__container {
+  display: flex;
+  align-items: center;
+  height: 19px;
+  margin-top: 8px;
+}
+
+.input__city {
+  border-style: none;
+  outline: none;
+  max-width: 207px;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.input__image {
+  margin-right: 7px;
+}
+
+.input__date__range__container {
+  display: flex;
+}
+
+.input__calendar {
+  position: relative;
+  border-style: none;
+  outline: none;
+  max-width: 207px;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.input__calendar::-webkit-calendar-picker-indicator {
+  position: absolute;
+  width: 180px;
+  left: -90px;
+  opacity: 0;
+}
+
+.input__spinbox__container {
+  display: flex;
+}
+
+.spinbox__container {
+  display: flex;
+  height: 27px;
+  margin-right: 28px;
+  margin-top: 5px;
+}
+
+.spinbox__arrows {
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+}
+
+.spinbox__arrow {
+  margin-bottom: 7px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.input__spinbox {
+  text-align: center;
+  width: 30px;
+  height: 27px;
+  border: 1px solid #909092;
+  outline: none;
+}
+
+.input__spinbox::-webkit-outer-spin-button,
+.input__spinbox::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.input__spinbox {
+  -moz-appearance: textfield;
+}
+
+.shevron {
+  margin-left: 10px;
+}
+
+.plus__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  margin-top: 29px;
+  border-radius: 50%;
+  background-color: #FFD18B;
+  cursor: pointer;
+}
+
+.button__item {
+  margin-left: 21px;
+  margin-top: 15px;
+}
+
+.input__button {
+  width: 175px;
+  height: 63px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #FFFFFF;
+  background-color: #ED9915; 
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 26px;
+} 
+
+.delimiter {
+  display: block;
+  background-color: #EBEBEB;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  margin: 60px 29px 0 9px;
+  border-radius: 50%;
+}
+
+.vertical {
+  width: 2px;
+  height: 32px;
+  margin: 32px 26px 0 26px;
+}
+
+
+@media only screen and (max-width: 1200px) and (min-width: 769px)  {
+  .booking__container {
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    min-height: 200px;
+    border-radius: 0;
+  }
+
+  .input__date__range__container {
+    margin-left: 51px;
+  }
+
+  .plus__item {
+    display: none;
+  }
+
+  .spinbox__item {
+    width: 100px;
+  }
+
+  .button__item {
+    margin-left: 0;
+    margin-top: 26px;
+    margin-bottom: auto;
+  }
+
+  .delimiter {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 490px) {
+  .booking__container {
+    width: 100%;
+    height: 180px;
+    flex-wrap: wrap;
+    border-radius: 0;
+  }
+
+  .delimiter {
+    display: none;
+  }
+
+  .plus__item {
+    display: none;
+  }
+
+  .input__date__range__container {
+    margin: 0 auto 0 1rem;
+  }
+
+  .booking__city__item {
+    margin: 0 1rem 0 1rem;
+    width: 35%;
+  }
+
+  .input__spinbox__container {
+    margin: 0 1rem 0 1rem;
+    width: 35%;
+  }
+
+  .spinbox__item .label {
+    margin-top: 14px;
+  }
+
+  .input__button {
+    width: 240px;
+  }
+}
+
+@media only screen and (max-width: 490px) and (min-width: 320px)  {
+  .booking__container {
+      width: 90%;
+      height: 310px;
+      flex-direction: column;
+  }
+
+  .booking__city__item {
+      margin: 0 auto 0 1rem;
+  }
+
+  .input__date__range__container{
+      margin: 0 auto 0 1rem;
+  }
+
+  .spinbox__item {
+    width: 80px;
+    margin: 0 auto 0 1rem;
+  }
+
+  .plus__item {
+    display: none;
+  }
+
+  .button__item {
+    padding: 15px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .input__button {
+    display: block;
+    width: 100%;
+  }
+
+  .spinbox-item {
+    width: 80px;
+    margin: 0;
+  }
+
+  .delimiter {
+      display: none;
+  }
+
+  .shevron {
+      display: none;
+  }
+}
