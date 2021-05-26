@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import XLSX from 'xlsx';
 
+import Table from '../table/Table';
+
 // const ajaxURL = 'http://192.168.1.143:4500/api/import';
 const ajaxURL = 'http://193.243.158.230:4500/api/import';
 const ajaxConfig = { headers: { 'Authorization': 'test-task' } };
@@ -14,6 +16,7 @@ class Uploader extends React.Component {
         inputLabel: "Перетащите сюда файл или нажмите чтобы выбрать",
         error: null,
         serverResponse: null,
+        data: null,
     };
 
     constructor(props) {
@@ -69,9 +72,12 @@ class Uploader extends React.Component {
                     if (res.data.status === 'OK')
                         console.log(res.data);
 
-                    this.setState({ ...this.state, serverResponse: res.data.message });
+                    this.setState({ ...this.state, serverResponse: res.data.message, data: workbook });
                 })
-                .catch(err => { this.setState({ ...this.state, serverResponse: 'Error occured while uploading data' }) });
+                .catch(err => {
+                    console.error(err);
+                    this.setState({ ...this.state, serverResponse: 'Error occured while uploading data' })
+                });
         }
 
     }
@@ -96,19 +102,22 @@ class Uploader extends React.Component {
 
     render() {
         return (
-            <div className={`uploader__container ${this.state.isInDropZone ? "highlighted" : ""} ${this.state.error ? "error" : ""}`}>
-                <label className="uploader__label" htmlFor={this.props.id || "file"}>
-                    {this.state.inputLabel}
-                </label>
-                <input
-                    id={this.props.id || "file"}
-                    type="file"
-                    className="uploader__input"
-                    onDragEnter={this.enterDropZone}
-                    onDragLeave={this.leaveDropZone}
-                    onChange={this.handleFileUpload}
-                />
-                {this.state.serverResponse && <div className="message">{this.state.serverResponse}</div>}
+            <div>
+                <div className={`uploader__container ${this.state.isInDropZone ? "highlighted" : ""} ${this.state.error ? "error" : ""}`}>
+                    <label className="uploader__label" htmlFor={this.props.id || "file"}>
+                        {this.state.inputLabel}
+                    </label>
+                    <input
+                        id={this.props.id || "file"}
+                        type="file"
+                        className="uploader__input"
+                        onDragEnter={this.enterDropZone}
+                        onDragLeave={this.leaveDropZone}
+                        onChange={this.handleFileUpload}
+                    />
+                    {this.state.serverResponse && <div className="message">{this.state.serverResponse}</div>}
+                </div>
+                {this.state.data && <Table data={this.state.data} />}
             </div>
         );
     }
